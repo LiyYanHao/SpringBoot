@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.slx.zsxt.dao.commLogTransMapper">
+  <resultMap id="BaseResultMap" type="com.slx.zsxt.model.commLogTrans">
+    <id column="LOG_TRANS_ID" jdbcType="VARCHAR" property="logTransId" />
+    <result column="CORE_LOGS_ID" jdbcType="VARCHAR" property="coreLogsId" />
+    <result column="CUST_NO" jdbcType="VARCHAR" property="custNo" />
+    <result column="TRANS_TYPE" jdbcType="CHAR" property="transType" />
+    <result column="TRANS_ROUTE" jdbcType="CHAR" property="transRoute" />
+    <result column="PAY_ACCT" jdbcType="VARCHAR" property="payAcct" />
+    <result column="PAY_NAME" jdbcType="VARCHAR" property="payName" />
+    <result column="REC_ACCT" jdbcType="VARCHAR" property="recAcct" />
+    <result column="REC_NAME" jdbcType="VARCHAR" property="recName" />
+    <result column="TRANS_DATE" jdbcType="TIMESTAMP" property="transDate" />
+    <result column="TRANS_TIME" jdbcType="VARCHAR" property="transTime" />
+    <result column="TRANS_AMT" jdbcType="DECIMAL" property="transAmt" />
+    <result column="CCY" jdbcType="CHAR" property="ccy" />
+    <result column="FEE" jdbcType="DECIMAL" property="fee" />
+    <result column="TRANS_PRUPOSE" jdbcType="VARCHAR" property="transPrupose" />
+    <result column="TRANS_STATUS" jdbcType="CHAR" property="transStatus" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    LOG_TRANS_ID, CORE_LOGS_ID, CUST_NO, TRANS_TYPE, TRANS_ROUTE, PAY_ACCT, PAY_NAME, 
+    REC_ACCT, REC_NAME, TRANS_DATE, TRANS_TIME, TRANS_AMT, CCY, FEE, TRANS_PRUPOSE, TRANS_STATUS, 
+    REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from COMMON_LOG_TRANS
+    where LOG_TRANS_ID = #{logTransId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from COMMON_LOG_TRANS
+    where LOG_TRANS_ID = #{logTransId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.slx.zsxt.model.commLogTrans">
+    insert into COMMON_LOG_TRANS (LOG_TRANS_ID, CORE_LOGS_ID, CUST_NO, 
+      TRANS_TYPE, TRANS_ROUTE, PAY_ACCT, 
+      PAY_NAME, REC_ACCT, REC_NAME, 
+      TRANS_DATE, TRANS_TIME, TRANS_AMT, 
+      CCY, FEE, TRANS_PRUPOSE, 
+      TRANS_STATUS, REMARK)
+    values (#{logTransId,jdbcType=VARCHAR}, #{coreLogsId,jdbcType=VARCHAR}, #{custNo,jdbcType=VARCHAR}, 
+      #{transType,jdbcType=CHAR}, #{transRoute,jdbcType=CHAR}, #{payAcct,jdbcType=VARCHAR}, 
+      #{payName,jdbcType=VARCHAR}, #{recAcct,jdbcType=VARCHAR}, #{recName,jdbcType=VARCHAR}, 
+      #{transDate,jdbcType=TIMESTAMP}, #{transTime,jdbcType=VARCHAR}, #{transAmt,jdbcType=DECIMAL}, 
+      #{ccy,jdbcType=CHAR}, #{fee,jdbcType=DECIMAL}, #{transPrupose,jdbcType=VARCHAR}, 
+      #{transStatus,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.slx.zsxt.model.commLogTrans">
+    insert into COMMON_LOG_TRANS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="logTransId != null">
+        LOG_TRANS_ID,
+      </if>
+      <if test="coreLogsId != null">
+        CORE_LOGS_ID,
+      </if>
+      <if test="custNo != null">
+        CUST_NO,
+      </if>
+      <if test="transType != null">
+        TRANS_TYPE,
+      </if>
+      <if test="transRoute != null">
+        TRANS_ROUTE,
+      </if>
+      <if test="payAcct != null">
+        PAY_ACCT,
+      </if>
+      <if test="payName != null">
+        PAY_NAME,
+      </if>
+      <if test="recAcct != null">
+        REC_ACCT,
+      </if>
+      <if test="recName != null">
+        REC_NAME,
+      </if>
+      <if test="transDate != null">
+        TRANS_DATE,
+      </if>
+      <if test="transTime != null">
+        TRANS_TIME,
+      </if>
+      <if test="transAmt != null">
+        TRANS_AMT,
+      </if>
+      <if test="ccy != null">
+        CCY,
+      </if>
+      <if test="fee != null">
+        FEE,
+      </if>
+      <if test="transPrupose != null">
+        TRANS_PRUPOSE,
+      </if>
+      <if test="transStatus != null">
+        TRANS_STATUS,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="logTransId != null">
+        #{logTransId,jdbcType=VARCHAR},
+      </if>
+      <if test="coreLogsId != null">
+        #{coreLogsId,jdbcType=VARCHAR},
+      </if>
+      <if test="custNo != null">
+        #{custNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null">
+        #{transType,jdbcType=CHAR},
+      </if>
+      <if test="transRoute != null">
+        #{transRoute,jdbcType=CHAR},
+      </if>
+      <if test="payAcct != null">
+        #{payAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="payName != null">
+        #{payName,jdbcType=VARCHAR},
+      </if>
+      <if test="recAcct != null">
+        #{recAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="recName != null">
+        #{recName,jdbcType=VARCHAR},
+      </if>
+      <if test="transDate != null">
+        #{transDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transTime != null">
+        #{transTime,jdbcType=VARCHAR},
+      </if>
+      <if test="transAmt != null">
+        #{transAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="ccy != null">
+        #{ccy,jdbcType=CHAR},
+      </if>
+      <if test="fee != null">
+        #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="transPrupose != null">
+        #{transPrupose,jdbcType=VARCHAR},
+      </if>
+      <if test="transStatus != null">
+        #{transStatus,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.slx.zsxt.model.commLogTrans">
+    update COMMON_LOG_TRANS
+    <set>
+      <if test="coreLogsId != null">
+        CORE_LOGS_ID = #{coreLogsId,jdbcType=VARCHAR},
+      </if>
+      <if test="custNo != null">
+        CUST_NO = #{custNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null">
+        TRANS_TYPE = #{transType,jdbcType=CHAR},
+      </if>
+      <if test="transRoute != null">
+        TRANS_ROUTE = #{transRoute,jdbcType=CHAR},
+      </if>
+      <if test="payAcct != null">
+        PAY_ACCT = #{payAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="payName != null">
+        PAY_NAME = #{payName,jdbcType=VARCHAR},
+      </if>
+      <if test="recAcct != null">
+        REC_ACCT = #{recAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="recName != null">
+        REC_NAME = #{recName,jdbcType=VARCHAR},
+      </if>
+      <if test="transDate != null">
+        TRANS_DATE = #{transDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transTime != null">
+        TRANS_TIME = #{transTime,jdbcType=VARCHAR},
+      </if>
+      <if test="transAmt != null">
+        TRANS_AMT = #{transAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="ccy != null">
+        CCY = #{ccy,jdbcType=CHAR},
+      </if>
+      <if test="fee != null">
+        FEE = #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="transPrupose != null">
+        TRANS_PRUPOSE = #{transPrupose,jdbcType=VARCHAR},
+      </if>
+      <if test="transStatus != null">
+        TRANS_STATUS = #{transStatus,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where LOG_TRANS_ID = #{logTransId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.slx.zsxt.model.commLogTrans">
+    update COMMON_LOG_TRANS
+    set CORE_LOGS_ID = #{coreLogsId,jdbcType=VARCHAR},
+      CUST_NO = #{custNo,jdbcType=VARCHAR},
+      TRANS_TYPE = #{transType,jdbcType=CHAR},
+      TRANS_ROUTE = #{transRoute,jdbcType=CHAR},
+      PAY_ACCT = #{payAcct,jdbcType=VARCHAR},
+      PAY_NAME = #{payName,jdbcType=VARCHAR},
+      REC_ACCT = #{recAcct,jdbcType=VARCHAR},
+      REC_NAME = #{recName,jdbcType=VARCHAR},
+      TRANS_DATE = #{transDate,jdbcType=TIMESTAMP},
+      TRANS_TIME = #{transTime,jdbcType=VARCHAR},
+      TRANS_AMT = #{transAmt,jdbcType=DECIMAL},
+      CCY = #{ccy,jdbcType=CHAR},
+      FEE = #{fee,jdbcType=DECIMAL},
+      TRANS_PRUPOSE = #{transPrupose,jdbcType=VARCHAR},
+      TRANS_STATUS = #{transStatus,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where LOG_TRANS_ID = #{logTransId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.slx.zsxt.model.commLogTrans">
+    <id column="LOG_TRANS_ID" jdbcType="VARCHAR" property="logTransId" />
+    <result column="CORE_LOGS_ID" jdbcType="VARCHAR" property="coreLogsId" />
+    <result column="CUST_NO" jdbcType="VARCHAR" property="custNo" />
+    <result column="TRANS_TYPE" jdbcType="CHAR" property="transType" />
+    <result column="TRANS_ROUTE" jdbcType="CHAR" property="transRoute" />
+    <result column="PAY_ACCT" jdbcType="VARCHAR" property="payAcct" />
+    <result column="PAY_NAME" jdbcType="VARCHAR" property="payName" />
+    <result column="REC_ACCT" jdbcType="VARCHAR" property="recAcct" />
+    <result column="REC_NAME" jdbcType="VARCHAR" property="recName" />
+    <result column="TRANS_DATE" jdbcType="TIMESTAMP" property="transDate" />
+    <result column="TRANS_TIME" jdbcType="VARCHAR" property="transTime" />
+    <result column="TRANS_AMT" jdbcType="DECIMAL" property="transAmt" />
+    <result column="CCY" jdbcType="CHAR" property="ccy" />
+    <result column="FEE" jdbcType="DECIMAL" property="fee" />
+    <result column="TRANS_PRUPOSE" jdbcType="VARCHAR" property="transPrupose" />
+    <result column="TRANS_STATUS" jdbcType="CHAR" property="transStatus" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    LOG_TRANS_ID, CORE_LOGS_ID, CUST_NO, TRANS_TYPE, TRANS_ROUTE, PAY_ACCT, PAY_NAME, 
+    REC_ACCT, REC_NAME, TRANS_DATE, TRANS_TIME, TRANS_AMT, CCY, FEE, TRANS_PRUPOSE, TRANS_STATUS, 
+    REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from COMMON_LOG_TRANS
+    where LOG_TRANS_ID = #{logTransId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from COMMON_LOG_TRANS
+    where LOG_TRANS_ID = #{logTransId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.slx.zsxt.model.commLogTrans">
+    insert into COMMON_LOG_TRANS (LOG_TRANS_ID, CORE_LOGS_ID, CUST_NO, 
+      TRANS_TYPE, TRANS_ROUTE, PAY_ACCT, 
+      PAY_NAME, REC_ACCT, REC_NAME, 
+      TRANS_DATE, TRANS_TIME, TRANS_AMT, 
+      CCY, FEE, TRANS_PRUPOSE, 
+      TRANS_STATUS, REMARK)
+    values (#{logTransId,jdbcType=VARCHAR}, #{coreLogsId,jdbcType=VARCHAR}, #{custNo,jdbcType=VARCHAR}, 
+      #{transType,jdbcType=CHAR}, #{transRoute,jdbcType=CHAR}, #{payAcct,jdbcType=VARCHAR}, 
+      #{payName,jdbcType=VARCHAR}, #{recAcct,jdbcType=VARCHAR}, #{recName,jdbcType=VARCHAR}, 
+      #{transDate,jdbcType=TIMESTAMP}, #{transTime,jdbcType=VARCHAR}, #{transAmt,jdbcType=DECIMAL}, 
+      #{ccy,jdbcType=CHAR}, #{fee,jdbcType=DECIMAL}, #{transPrupose,jdbcType=VARCHAR}, 
+      #{transStatus,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.slx.zsxt.model.commLogTrans">
+    insert into COMMON_LOG_TRANS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="logTransId != null">
+        LOG_TRANS_ID,
+      </if>
+      <if test="coreLogsId != null">
+        CORE_LOGS_ID,
+      </if>
+      <if test="custNo != null">
+        CUST_NO,
+      </if>
+      <if test="transType != null">
+        TRANS_TYPE,
+      </if>
+      <if test="transRoute != null">
+        TRANS_ROUTE,
+      </if>
+      <if test="payAcct != null">
+        PAY_ACCT,
+      </if>
+      <if test="payName != null">
+        PAY_NAME,
+      </if>
+      <if test="recAcct != null">
+        REC_ACCT,
+      </if>
+      <if test="recName != null">
+        REC_NAME,
+      </if>
+      <if test="transDate != null">
+        TRANS_DATE,
+      </if>
+      <if test="transTime != null">
+        TRANS_TIME,
+      </if>
+      <if test="transAmt != null">
+        TRANS_AMT,
+      </if>
+      <if test="ccy != null">
+        CCY,
+      </if>
+      <if test="fee != null">
+        FEE,
+      </if>
+      <if test="transPrupose != null">
+        TRANS_PRUPOSE,
+      </if>
+      <if test="transStatus != null">
+        TRANS_STATUS,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="logTransId != null">
+        #{logTransId,jdbcType=VARCHAR},
+      </if>
+      <if test="coreLogsId != null">
+        #{coreLogsId,jdbcType=VARCHAR},
+      </if>
+      <if test="custNo != null">
+        #{custNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null">
+        #{transType,jdbcType=CHAR},
+      </if>
+      <if test="transRoute != null">
+        #{transRoute,jdbcType=CHAR},
+      </if>
+      <if test="payAcct != null">
+        #{payAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="payName != null">
+        #{payName,jdbcType=VARCHAR},
+      </if>
+      <if test="recAcct != null">
+        #{recAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="recName != null">
+        #{recName,jdbcType=VARCHAR},
+      </if>
+      <if test="transDate != null">
+        #{transDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transTime != null">
+        #{transTime,jdbcType=VARCHAR},
+      </if>
+      <if test="transAmt != null">
+        #{transAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="ccy != null">
+        #{ccy,jdbcType=CHAR},
+      </if>
+      <if test="fee != null">
+        #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="transPrupose != null">
+        #{transPrupose,jdbcType=VARCHAR},
+      </if>
+      <if test="transStatus != null">
+        #{transStatus,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.slx.zsxt.model.commLogTrans">
+    update COMMON_LOG_TRANS
+    <set>
+      <if test="coreLogsId != null">
+        CORE_LOGS_ID = #{coreLogsId,jdbcType=VARCHAR},
+      </if>
+      <if test="custNo != null">
+        CUST_NO = #{custNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null">
+        TRANS_TYPE = #{transType,jdbcType=CHAR},
+      </if>
+      <if test="transRoute != null">
+        TRANS_ROUTE = #{transRoute,jdbcType=CHAR},
+      </if>
+      <if test="payAcct != null">
+        PAY_ACCT = #{payAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="payName != null">
+        PAY_NAME = #{payName,jdbcType=VARCHAR},
+      </if>
+      <if test="recAcct != null">
+        REC_ACCT = #{recAcct,jdbcType=VARCHAR},
+      </if>
+      <if test="recName != null">
+        REC_NAME = #{recName,jdbcType=VARCHAR},
+      </if>
+      <if test="transDate != null">
+        TRANS_DATE = #{transDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transTime != null">
+        TRANS_TIME = #{transTime,jdbcType=VARCHAR},
+      </if>
+      <if test="transAmt != null">
+        TRANS_AMT = #{transAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="ccy != null">
+        CCY = #{ccy,jdbcType=CHAR},
+      </if>
+      <if test="fee != null">
+        FEE = #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="transPrupose != null">
+        TRANS_PRUPOSE = #{transPrupose,jdbcType=VARCHAR},
+      </if>
+      <if test="transStatus != null">
+        TRANS_STATUS = #{transStatus,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where LOG_TRANS_ID = #{logTransId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.slx.zsxt.model.commLogTrans">
+    update COMMON_LOG_TRANS
+    set CORE_LOGS_ID = #{coreLogsId,jdbcType=VARCHAR},
+      CUST_NO = #{custNo,jdbcType=VARCHAR},
+      TRANS_TYPE = #{transType,jdbcType=CHAR},
+      TRANS_ROUTE = #{transRoute,jdbcType=CHAR},
+      PAY_ACCT = #{payAcct,jdbcType=VARCHAR},
+      PAY_NAME = #{payName,jdbcType=VARCHAR},
+      REC_ACCT = #{recAcct,jdbcType=VARCHAR},
+      REC_NAME = #{recName,jdbcType=VARCHAR},
+      TRANS_DATE = #{transDate,jdbcType=TIMESTAMP},
+      TRANS_TIME = #{transTime,jdbcType=VARCHAR},
+      TRANS_AMT = #{transAmt,jdbcType=DECIMAL},
+      CCY = #{ccy,jdbcType=CHAR},
+      FEE = #{fee,jdbcType=DECIMAL},
+      TRANS_PRUPOSE = #{transPrupose,jdbcType=VARCHAR},
+      TRANS_STATUS = #{transStatus,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where LOG_TRANS_ID = #{logTransId,jdbcType=VARCHAR}
+  </update>
+</mapper>
